@@ -1,5 +1,5 @@
 
-import '../src/styles/styles.css';
+import '../src/styles/styles.scss';
 import './styles.css';
 
 export const parameters = {

@@ -1,4 +1,6 @@
 import React from 'react';
+import cn from 'classnames';
+import s from './Input.module.scss';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -13,6 +15,40 @@ export type InputProps = Omit<
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  () => null);
+  ({ value, onChange, className, afterSlot, ...props }, ref) => {
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>): void => {
+        onChange(event.target.value);
+      },
+      [onChange]
+    );
+
+    return (
+      <label
+        className={cn(
+          s.input,
+          props.disabled && s.input_disabled,
+          className
+        )}
+      >
+        <input
+          {...props}
+          ref={ref}
+          type="text"
+          value={value}
+          className={s.input__field}
+          onChange={handleChange}
+        />
+        {
+          afterSlot && (
+            <div className={s.input__after}>
+              {afterSlot}
+            </div>
+          )
+        }
+      </label>
+    );
+  }
+);
 
 export default Input;

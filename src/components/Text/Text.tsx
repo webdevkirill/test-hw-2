@@ -1,4 +1,6 @@
+import cn from 'classnames';
 import * as React from 'react'
+import s from './Text.module.scss';
 
 export type TextProps = {
     /** Дополнительный класс */
@@ -17,6 +19,13 @@ export type TextProps = {
     maxLines?: number;
 };
 
-const Text: React.FC<TextProps> = () => null
+const Text: React.FC<TextProps> = ({ className, weight, tag:Tag = 'p', view='p-14', color, children, maxLines }) => {
+    return (<Tag
+      className={cn(s.text, s[`text_view-${view}`], weight && s[`text_weight-${weight}`], color && s[`text_color-${color}`], maxLines && s['text_multi-ellipsis'], className)}
+      style={
+        { '--max-lines-count': maxLines } as React.CSSProperties
+      }
+    >{children}</Tag>);
+}
 
 export default Text;

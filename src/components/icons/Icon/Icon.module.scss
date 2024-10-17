@@ -1,0 +1,21 @@
+@import '../../../styles/vars.scss';
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  color: currentColor;
+
+  &_color {
+    &-primary {
+      color: $text-primary;
+    }
+
+    &-secondary {
+      color: $text-secondary;
+    }
+
+    &-accent {
+      color: $text-accent;
+    }
+  }
+}
