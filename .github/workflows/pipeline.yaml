@@ -3,7 +3,7 @@ on: [push]
 jobs:
   validate:
     if: ${{ github.repository_owner != 'ktsstudio' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       IMAGE: 'ktshub/frontend-hw-checker:task-392ab8c9-93f2-4021-bb3b-188ce184b0f2'
     steps:
